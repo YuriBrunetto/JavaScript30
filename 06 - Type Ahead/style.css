@@ -5,6 +5,9 @@
       font-size: 20px;
       font-weight: 200;
     }
+    * {
+      -webkit-font-smoothing: antialiased;
+    }
     *, *:before, *:after {
       box-sizing: inherit;
     }
