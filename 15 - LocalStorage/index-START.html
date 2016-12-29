@@ -22,6 +22,10 @@
     <form class="add-items">
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
+      <div class="clear-both"></div>
+      <button type="button" id="btn-check">Check all</button>
+      <button type="button" id="btn-uncheck">Uncheck all</button>
+      <div class="clear-both"></div>
     </form>
   </div>
 
@@ -29,6 +33,8 @@
   const addItems = document.querySelector('.add-items')
   const itemsList = document.querySelector('.plates')
   const items = JSON.parse(localStorage.getItem('items')) || []
+  const btnCheck = document.getElementById('btn-check')
+  const btnUncheck = document.getElementById('btn-uncheck')
 
   function addItem(e) {
     e.preventDefault()
@@ -65,8 +71,26 @@
     populateList(items, itemsList)
   }
 
+  function toggleCheck(e) {
+    if (e.target.matches('#btn-check')) {
+      const inputs = itemsList.querySelectorAll('input')
+      inputs.forEach((input, i) => {
+        items[i].done = true
+      })
+    } else {
+      const inputs = itemsList.querySelectorAll('input')
+      inputs.forEach((input, i) => {
+        items[i].done = false
+      })
+    }
+    localStorage.setItem('items', JSON.stringify(items))
+    populateList(items, itemsList)
+  }
+
   addItems.addEventListener('submit', addItem)
   itemsList.addEventListener('click', toggleDone)
+  btnCheck.addEventListener('click', toggleCheck)
+  btnUncheck.addEventListener('click', toggleCheck)
 
   populateList(items, itemsList)
 </script>

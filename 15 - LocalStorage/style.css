@@ -76,3 +76,20 @@
       outline:0;
       border:1px solid rgba(0,0,0,0.1);
     }
+
+    .add-items button {
+      margin-top: 8px;
+      border: none;
+      padding: 5px;
+      float: right;
+      margin-left: 8px;
+      border: 1px solid rgba(0,0,0,.12);
+      outline: none;
+      cursor: pointer;
+    }
+
+.clear-both {
+  height: 0;
+  clear: both;
+  overflow: hidden;
+}
